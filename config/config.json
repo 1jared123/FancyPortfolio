@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "IronMan",
-    "database": "second_opinion_db",
+    "database": "contacts_for_me",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

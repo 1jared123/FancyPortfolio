@@ -2,9 +2,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
-var passport = require("passport");
-var session = require("express-session");
-var LocalStrategy = require("passport-local").Strategy;
 var db = require("./models");
 
 var app = express();
@@ -25,14 +22,6 @@ app.use(session({
     saveUninitialized: true
 }));
 
-app.use(passport.initialize());
-app.use(passport.session());//persistent login
-app.use(function(req, res, next) {
-    res.locals.user = req.user;
-    next();
-});
-require("./config/passport.js")(passport, db.Patients);
-
 //Setting up Handlebars
 var exphbs = require("express-handlebars");
 
@@ -47,10 +36,8 @@ app.set("view engine", "handlebars");
 
 //Importing routes
 var opinions = require("./controllers/opinions_controller.js");
-var authroute = require("./controllers/authcontroller.js")(passport);
 
 app.use("/", opinions);
-app.use("/", authroute);
 
 //Default Page for all unknown url
 app.get("*", function(req, res) {

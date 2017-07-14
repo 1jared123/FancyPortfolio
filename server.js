@@ -16,12 +16,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-app.use(session({
-    secret: "keyboard cat",
-    resave: true,
-    saveUninitialized: true
-}));
-
 //Setting up Handlebars
 var exphbs = require("express-handlebars");
 
@@ -52,7 +46,7 @@ app.get("*", function(req, res) {
 //   res.render('index');
 // });
 
-db.sequelize.sync().then(function() {
+db.sequelize.sync({}).then(function() {
     app.listen(PORT, function() {
         console.log("Server Operational - Listening to Port " + PORT);
     });

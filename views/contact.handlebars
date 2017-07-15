@@ -4,7 +4,8 @@
 		<div class="col-md-12">
 			
 			<form class="form-horizontal">
-
+				
+				{{!-- get info from people to hopefully save to mysql --}}
 				<div class="form-group">
 				    <label for="name">Your Name</label>
 				    <input type="text" class="form-control" id="name" style="width: 100%;" placeholder="Steve Jobs">
@@ -29,7 +30,7 @@
 
 		</div>
 	</div>
-	
+	{{!-- if we get contacts back from the database, display them here --}}
 	{{#if contacts}}
 		{{#each contacts}}
 			<h1 class="con-header">All contacts sent</h1>

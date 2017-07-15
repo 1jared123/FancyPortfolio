@@ -19,35 +19,34 @@ router.get("/projects", function(req, res) {
     res.render("projects");
 });
 
-router.get("/projects/scraped", function(req, res) {
+router.get("/scraped", function(req, res) {
     res.render("project2");
 });
 
-router.get("/projects/error", function(req, res) {
-    res.render("project2");
+router.get("/error", function(req, res) {
+    res.render("error");
 });
 
 router.get("/contact", function(req, res) {
-    // db.Contacts.findAll({}).then(function(contact) {
-    //     console.log(contact);
-    //     res.render("contacts", {
-    //         contacts: contact
-    //     });
-    // });
-    res.render("404");
+    db.Contacts.findAll({}).then(function(contact) {
+        console.log(contact);
+        res.render("contacts", {
+            contacts: contact
+        });
+    });
 });
 
 //Router to update the current doctor and diagnosis for the logged in patient
-router.post("/", function(req, res) {
+router.post("/contact", function(req, res) {
 
     console.log(req.body);
 
-    db.Contact.save({}).then(function(contacts) {
-        //send the results of the doctor match as a response object
-        // console.log(res.json(contacts));
-        console.log(contacts);
+    // db.Contact.save({}).then(function(contacts) {
+    //     //send the results of the doctor match as a response object
+    //     // console.log(res.json(contacts));
+    //     console.log(contacts + "Saved!");
 
-    });
+    // });
 });
 
 //Router to update to add an admin based on the current Patients table

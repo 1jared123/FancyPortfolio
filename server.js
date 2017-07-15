@@ -35,7 +35,7 @@ app.use("/", opinions);
 
 //Default Page for all unknown url
 app.get("*", function(req, res) {
-	res.redirect("/404");
+	res.redirect("404");
 });
 // //404 pages
 // app.use(function (req, res) {
